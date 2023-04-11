@@ -87,11 +87,11 @@
                 tareaElement.innerHTML = `
                         <div class="col">
                             <div class="card mb-4 rounded-3 shadow-sm">
-                            <div class="card-header py-3">
-                                <h4 class="my-0 fw-normal">${tarea.titulo}</h4>
+                            <div class="card-header py-3 bg-dark">
+                                <h4 class="my-0 fw-normal text-light">${tarea.titulo}</h4>
                             </div>
-                            <div class="card-body">
-                                <p>${tarea.descripcion}</p>
+                            <div class="card-body bg-dark">
+                                <p class="text-light">${tarea.descripcion}</p>
                                 <button type="button" data-id="${tarea.Id}" class="borrar-tarea w-100 btn btn-lg btn-outline-primary">Borrar tarea</button>
                                 </div>
                             </div>
