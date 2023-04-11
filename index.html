@@ -4,10 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <title>Lista de tareas</title>
 </head>
 <body>
+    <header class="text-center p-5 bg-black">
+        <div class="container">
+            <h1 class="text-light display-2">Lista de tareas</h1>
+        </div>
+    </header>
+    <main class="p-5 bg-dark">
+        <div class="container p-5 d-flex justify-content-center align-items-center">
+            <form class="formulario w-50" action="">
+                <label class="text-light" for="titulo-tarea">Ingresa el título de la tarea</label>
+                <input name="titulo-tarea" id="titulo-tarea" class="form-control form-control-lg mb-4" type="text" placeholder="Titulo tarea">
+                <label class="text-light" for="descripcion-tarea">Ingresa la descripción de la tarea</label>
+                <input name="descripcion-tarea" id="descripcion-tarea" class="form-control form-control-lg mb-4" type="text" placeholder="Descripción tarea">
+                <button class="btn btn-outline-primary">Agregar tarea</button>
+            </form> 
+            <div class="lista-tareas"></div>          
+        </div>
+    </main>
+    <footer class="text-center p-4 bg-black">
+        <h3>Este es un ejercicio de práctica de DOM perteneciente al trabajo número 5 del módulo 2 de <a href="https://rollingcodeschool.com/">Rolling code school</a>.</h3>
+        <h4>Hecho por <a href="https://github.com/silviojrcc">Silvio Ruiz</a></h4>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="./js/index.js"></script>
 </body>
 </html>
