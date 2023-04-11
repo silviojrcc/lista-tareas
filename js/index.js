@@ -46,7 +46,7 @@
         generarId(){
             //Utilizo los get y set para acceder y guardar la propiedad
             let ultimoId = this.lastId;
-            ultimoId++
+            ultimoId++;
             this.lastId = ultimoId;
             return ultimoId;
         }
