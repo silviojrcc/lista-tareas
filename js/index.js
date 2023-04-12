@@ -1,10 +1,13 @@
 (function (){
+    //Si emi o marcos viene a ver mi repo, lo solucioné con esta variable global
+    //Lo que sucedía es que yo tenía lastId en el prototipo/clase Tarea y siempre lo iniciaba en 0.
+    //Obviamente eso no se pasaba a otra instancia, todas las instancias iban a comenzar con lastId en 0.
+    let ultimoId = 0;
 
     class Tarea {
         #Id;
         #titulo;
         #descripcion;
-        #lastId = 0;
         constructor(titulo, descripcion){
             this.#Id = this.generarId();
             this.#titulo = titulo;
@@ -35,19 +38,8 @@
             this.#descripcion = descripcion;
         }
 
-        get lastId(){
-            return this.#lastId;
-        }
-
-        set lastId(lastId){
-            this.#lastId = lastId;
-        }
-
         generarId(){
-            //Utilizo los get y set para acceder y guardar la propiedad
-            let ultimoId = this.lastId;
             ultimoId++;
-            this.lastId = ultimoId;
             return ultimoId;
         }
     }
@@ -77,6 +69,7 @@
             nuevoArrayTareas.push(tarea);
             this.tareas = nuevoArrayTareas;
             this.mostrarTareas();
+            console.log(this.tareas)
         }
 
         mostrarTareas(){
@@ -106,41 +99,41 @@
                     const id = parseInt(boton.dataset.id);
                     this.borrarTarea(id);
                     this.mostrarTareas();
-                    console.log(id);
                 });
             });
         }
 
         borrarTarea(id) {
             const nuevoArrayTareas = this.tareas;
-            const tareaIndex = nuevoArrayTareas.findIndex(tarea => tarea.id === id);
+            const tareaIndex = nuevoArrayTareas.findIndex(tarea => tarea.Id === id);
             if (tareaIndex !== -1) {
               nuevoArrayTareas.splice(tareaIndex, 1);
+            } else {
+                console.log("no se encontro esa tarea?")
             }
             this.tareas = nuevoArrayTareas;
           }
-    }
-
-
-    function crearTarea(titulo, descripcion) {
-        return new Tarea(titulo, descripcion);
     }
     
     const listaTareas = new ListaTareas();
     const formulario = document.querySelector(".formulario");
     const listaTareasElement = document.querySelector(".lista-tareas");
+    const advertencia = document.querySelector(".advertencia");
     
     formulario.addEventListener("submit", (e) => {
         e.preventDefault();
         const titulo = formulario["titulo-tarea"].value || "";
         const descripcion = formulario["descripcion-tarea"].value || "";
+        advertencia.innerHTML = "";
+        titulo.textContent = "";
+        descripcion.textContent = "";
 
-        //Como pense que tal vez no estaba creando una nueva instancia de tarea cada vez que se disparaba el evento submit
-        //Hice una funcion que cree la tarea afuera del evento.
-        const tarea = crearTarea(titulo, descripcion);
-        // Intente llamando al metodo luego de crear la tarea, para ver si aumentaba el lastId pero no.
-        // tarea.generarId();
+        if (titulo !== "" && descripcion !== "") {
+            const tarea = new Tarea(titulo, descripcion);
+            listaTareas.agregarTarea(tarea, listaTareasElement);
+        } else {
+            advertencia.innerHTML = `<p>Debe ingresar ambos campos para poder añadir una tarea!!</p>`;
+        }
         
-        listaTareas.agregarTarea(tarea, listaTareasElement);
     })
 })();
