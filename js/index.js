@@ -121,6 +121,9 @@
     
     formulario.addEventListener("submit", (e) => {
         e.preventDefault();
+        const tituloInput = formulario["titulo-tarea"];
+        const descripcionInput = formulario["descripcion-tarea"];
+
         const titulo = formulario["titulo-tarea"].value || "";
         const descripcion = formulario["descripcion-tarea"].value || "";
 
@@ -130,5 +133,8 @@
         } else {
             advertencia.innerHTML = `<p>Debe ingresar ambos campos para poder añadir una tarea!!</p>`;
         }
+
+        tituloInput.value = "";
+        descripcionInput.value = "";
     });
 })();
