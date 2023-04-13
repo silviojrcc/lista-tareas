@@ -69,7 +69,6 @@
             nuevoArrayTareas.push(tarea);
             this.tareas = nuevoArrayTareas;
             this.mostrarTareas();
-            console.log(this.tareas)
         }
 
         mostrarTareas(){
@@ -124,9 +123,6 @@
         e.preventDefault();
         const titulo = formulario["titulo-tarea"].value || "";
         const descripcion = formulario["descripcion-tarea"].value || "";
-        advertencia.innerHTML = "";
-        titulo.textContent = "";
-        descripcion.textContent = "";
 
         if (titulo !== "" && descripcion !== "") {
             const tarea = new Tarea(titulo, descripcion);
@@ -134,6 +130,5 @@
         } else {
             advertencia.innerHTML = `<p>Debe ingresar ambos campos para poder añadir una tarea!!</p>`;
         }
-        
-    })
+    });
 })();
